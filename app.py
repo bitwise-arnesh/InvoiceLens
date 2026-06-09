@@ -83,6 +83,8 @@ st.sidebar.markdown("### Tech Stack")
 st.sidebar.markdown("""
 - Python
 - SQLite
+- Pandas
+- NumPy
 - Scikit-Learn
 - XGBoost
 - SHAP
@@ -127,7 +129,7 @@ col1, col2, col3 = st.columns(3)
 with col1:
     st.metric(
         label="R² Score",
-        value="97.06%"
+        value="97.00%"
     )
 
 with col2:
@@ -204,6 +206,10 @@ if predict_btn:
         value=f"${prediction:,.2f}"
     )
 
+    st.caption(
+        "Estimated freight cost generated using the trained Linear Regression model."
+    )
+
 # =====================================
 # Footer
 # =====================================
@@ -211,5 +217,5 @@ if predict_btn:
 st.markdown("---")
 
 st.caption(
-    "InvoiceLens • Machine Learning Powered Freight Cost Prediction • Built by Arnesh Bera"
+    "InvoiceLens • End-to-End Freight Cost Prediction System • Built by Arnesh Bera"
 )
