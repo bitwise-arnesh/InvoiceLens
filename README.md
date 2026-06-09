@@ -1,398 +1,318 @@
-# 📦 InvoiceLens: End-to-End Freight Cost Prediction System
+# InvoiceLens
 
-<div align="center">
+### End-to-End Freight Cost Prediction System
 
-## Machine Learning-Based Freight Cost Forecasting for Vendor Invoices
+Predict vendor freight costs using machine learning, feature engineering, model evaluation, hyperparameter tuning, explainability techniques, and cloud deployment.
 
-Predict freight costs from invoice data using Machine Learning, enabling better procurement planning, budgeting, and logistics decision-making.
-
-### 🚀 Live Demo
-
-https://invoicelens.streamlit.app
-
-### 📊 Model Performance
-
-| Metric   | Score      |
-| -------- | ---------- |
-| R² Score | **97.06%** |
-| MAE      | **24.46**  |
-| RMSE     | **124.43** |
-
-</div>
+**Live Demo:** https://invoicelens.streamlit.app
 
 ---
 
-# 1. Overview
+## Project Overview
 
-InvoiceLens is an end-to-end Machine Learning application that predicts vendor freight costs using historical invoice information.
+InvoiceLens is an end-to-end Machine Learning project designed to predict freight costs from invoice data.
 
-The project demonstrates the complete ML lifecycle:
+The project demonstrates the complete machine learning lifecycle:
 
-1. Data Storage
-2. Data Extraction
-3. Data Cleaning
-4. Exploratory Data Analysis
-5. Feature Engineering
-6. Model Training
-7. Model Evaluation
-8. Model Selection
-9. Model Serialization
-10. Streamlit Application Development
-11. Cloud Deployment
+1. Data Extraction from SQLite Database
+2. Data Cleaning and Preprocessing
+3. Feature Engineering
+4. Model Training
+5. Model Evaluation
+6. Hyperparameter Tuning
+7. Model Explainability using SHAP
+8. Model Serialization
+9. Interactive Web Application Development
+10. Cloud Deployment
 
-The system helps procurement teams estimate freight expenses before invoice processing, improving cost visibility and financial planning.
-
----
-
-# 2. Business Problem
-
-Freight costs significantly impact procurement and logistics budgets.
-
-Manual estimation often results in:
-
-* Budget overruns
-* Inaccurate forecasting
-* Poor vendor cost planning
-* Limited visibility into shipping expenses
-
-InvoiceLens addresses this challenge by automatically estimating freight costs from invoice characteristics.
+The final solution enables procurement and logistics teams to estimate freight costs before invoice processing, supporting budgeting and operational decision-making.
 
 ---
 
-# 3. Dataset & Features
+## Business Problem
 
-The model was trained using vendor invoice transaction records.
+Freight expenses are a significant component of procurement and supply chain operations.
 
-## Input Features
+Manual estimation often leads to:
 
-| Feature  | Description               |
-| -------- | ------------------------- |
-| Quantity | Number of units purchased |
-| Dollars  | Invoice amount in USD     |
+- Cost forecasting inaccuracies
+- Budget overruns
+- Vendor planning inefficiencies
+- Increased operational uncertainty
 
-## Target Variable
-
-| Variable     | Description              |
-| ------------ | ------------------------ |
-| Freight Cost | Shipping/Freight expense |
+InvoiceLens addresses this problem by providing real-time freight cost predictions based on invoice characteristics.
 
 ---
 
-# 4. Project Workflow
-
-## Step 1: Data Storage
-
-Invoice records were stored and managed using:
+## Project Architecture
 
 ```text
-SQLite
-```
-
-This allowed structured querying and efficient retrieval of invoice transactions.
-
----
-
-## Step 2: Data Extraction
-
-Invoice records were loaded from SQLite into Pandas DataFrames for analysis and preprocessing.
-
-Technologies:
-
-```text
-SQLite
-Pandas
+SQLite Database
+       │
+       ▼
+Data Preprocessing
+       │
+       ▼
+Feature Engineering
+       │
+       ▼
+Model Training
+       │
+       ▼
+Model Evaluation
+       │
+       ▼
+Hyperparameter Tuning
+       │
+       ▼
+SHAP Interpretability
+       │
+       ▼
+Model Serialization (.pkl)
+       │
+       ▼
+Streamlit Dashboard
+       │
+       ▼
+Cloud Deployment
 ```
 
 ---
 
-## Step 3: Data Preprocessing
+## Technology Stack
+
+### Programming Language
+
+- Python
+
+### Data Processing
+
+- Pandas
+- NumPy
+
+### Database
+
+- SQLite
+
+### Machine Learning
+
+- Scikit-Learn
+- XGBoost
+
+### Model Selection & Optimization
+
+- GridSearchCV
+- Cross Validation
+
+### Model Explainability
+
+- SHAP
+
+### Visualization
+
+- Matplotlib
+- Seaborn
+
+### Model Persistence
+
+- Joblib
+
+### Web Application
+
+- Streamlit
+
+### Version Control
+
+- Git
+- GitHub
+
+### Deployment
+
+- Streamlit Community Cloud
+
+---
+
+## Machine Learning Workflow
+
+### 1. Data Collection
+
+Data was retrieved from a SQLite database and loaded into Pandas DataFrames for analysis.
+
+### 2. Data Preprocessing
 
 Performed:
 
-* Data validation
-* Feature selection
-* Data cleaning
-* Train-test split
+- Missing value handling
+- Data cleaning
+- Data transformation
+- Feature selection
 
-Libraries:
+### 3. Feature Engineering
+
+Created predictive features using invoice-related attributes including:
+
+- Quantity
+- Invoice Dollar Amount
+
+### 4. Model Training
+
+The following regression algorithms were trained and evaluated:
+
+- Linear Regression
+- Decision Tree Regressor
+- Random Forest Regressor
+- XGBoost Regressor
+
+### 5. Hyperparameter Tuning
+
+GridSearchCV was applied to optimize XGBoost model performance.
+
+Best Parameters:
 
 ```python
-pandas
-numpy
+{
+    "learning_rate": 0.05,
+    "max_depth": 2,
+    "n_estimators": 200
+}
 ```
+
+### 6. Model Explainability
+
+SHAP values were used to understand feature contributions and improve model interpretability.
+
+### 7. Deployment
+
+The final application was deployed using Streamlit Community Cloud.
 
 ---
 
-## Step 4: Exploratory Data Analysis
+## Model Performance
 
-Conducted EDA to understand:
+### Linear Regression (Selected Model)
 
-* Freight cost distribution
-* Quantity patterns
-* Invoice value trends
-* Feature relationships
-* Outlier behavior
+| Metric | Score |
+|----------|----------|
+| R² Score | 97.00% |
+| MAE | 24.46 |
+| RMSE | 124.43 |
 
-Libraries:
+### Decision Tree Regressor
 
-```python
-matplotlib
-seaborn
-```
+| Metric | Score |
+|----------|----------|
+| R² Score | 96.30% |
+| MAE | 38.12 |
+| RMSE | 138.25 |
 
----
+### Random Forest Regressor
 
-## Step 5: Model Training
+| Metric | Score |
+|----------|----------|
+| R² Score | 96.70% |
+| MAE | 30.27 |
+| RMSE | 130.63 |
 
-Three regression models were trained and compared.
+### XGBoost Regressor
 
-### Model 1
-
-```python
-LinearRegression()
-```
-
-### Model 2
-
-```python
-RandomForestRegressor()
-```
-
-### Model 3
-
-```python
-XGBRegressor()
-```
+| Metric | Score |
+|----------|----------|
+| R² Score | 95.40% |
+| MAE | 26.96 |
+| RMSE | 154.20 |
 
 ---
 
-## Step 6: Model Evaluation
+## Why Linear Regression Was Selected
 
-Models were evaluated using:
+Although multiple models were evaluated, Linear Regression achieved:
 
-### R² Score
+- Highest R² Score
+- Lowest MAE
+- Lowest RMSE
 
-Measures variance explained by the model.
-
-### MAE (Mean Absolute Error)
-
-Measures average prediction error.
-
-### RMSE (Root Mean Squared Error)
-
-Measures prediction deviation.
-
----
-
-## Step 7: Model Selection
-
-After comparing multiple regression models, the best-performing model was selected for deployment.
-
-Selected model:
-
-```python
-Linear Regression
-```
-
-Advantages:
-
-* High accuracy
-* Fast inference
-* Lightweight deployment
-* Easy interpretability
-
----
-
-## Step 8: Model Serialization
-
-The trained model was saved using:
-
-```python
-joblib
-```
-
-Output:
+Final Performance:
 
 ```text
-linear_regression.pkl
+R² Score : 97.00%
+MAE      : 24.46
+RMSE     : 124.43
 ```
 
----
-
-## Step 9: Streamlit Deployment
-
-Built an interactive Streamlit application for real-time freight cost prediction.
-
-Features include:
-
-✅ Real-time predictions
-
-✅ Interactive dashboard
-
-✅ Business KPI display
-
-✅ Responsive UI
-
-✅ Cloud deployment
+Therefore, Linear Regression was chosen as the production model for deployment.
 
 ---
 
-# 5. Final Model Performance
-
-| Metric   | Value  |
-| -------- | ------ |
-| R² Score | 97.06% |
-| MAE      | 24.46  |
-| RMSE     | 124.43 |
-
----
-
-# 6. Application Screenshots
-
-## Dashboard
-
-<img width="100%" alt="Dashboard Screenshot" src="assets/dashboard.png">
-
-## Prediction Output
-
-<img width="100%" alt="Prediction Screenshot" src="assets/prediction.png">
-
----
-
-# 7. System Architecture
-
-```text
-                ┌─────────────────┐
-                │ SQLite Database │
-                └────────┬────────┘
-                         │
-                         ▼
-                ┌─────────────────┐
-                │ Data Extraction │
-                └────────┬────────┘
-                         │
-                         ▼
-                ┌─────────────────┐
-                │ Preprocessing   │
-                └────────┬────────┘
-                         │
-                         ▼
-                ┌─────────────────┐
-                │ Feature Creation│
-                └────────┬────────┘
-                         │
-                         ▼
-                ┌─────────────────┐
-                │ Model Training  │
-                └────────┬────────┘
-                         │
-                         ▼
-                ┌─────────────────┐
-                │ Model Selection │
-                └────────┬────────┘
-                         │
-                         ▼
-                ┌─────────────────┐
-                │ Saved Model     │
-                └────────┬────────┘
-                         │
-                         ▼
-                ┌─────────────────┐
-                │ Streamlit App   │
-                └────────┬────────┘
-                         │
-                         ▼
-                ┌─────────────────┐
-                │ Cloud Deployment│
-                └─────────────────┘
-```
-
----
-
-# 8. Tech Stack
-
-## Programming Language
-
-* Python
-
-## Database
-
-* SQLite
-
-## Data Processing
-
-* Pandas
-* NumPy
-
-## Data Visualization
-
-* Matplotlib
-* Seaborn
-
-## Machine Learning
-
-* Scikit-Learn
-* XGBoost
-
-## Model Persistence
-
-* Joblib
-
-## Explainability & Analysis
-
-* SHAP
-
-## Web Application
-
-* Streamlit
-
-## Version Control
-
-* Git
-* GitHub
-
-## Deployment
-
-* Streamlit Community Cloud
-
----
-
-# 9. Project Structure
+## Project Structure
 
 ```text
 InvoiceLens/
 │
-├── app.py
-├── requirements.txt
-├── README.md
-│
 ├── data/
-│
-├── db/
-│   └── invoices.db
-│
-├── notebooks/
 │
 ├── models/
 │   ├── linear_regression.pkl
 │   └── tuned_xgboost.pkl
 │
-├── src/
+├── notebooks/
 │
-└── assets/
+├── src/
+│   ├── data_preprocessing.py
+│   ├── feature_engineering.py
+│   ├── model_training.py
+│   ├── model_evaluation.py
+│   ├── hyperparameter_tuning.py
+│   ├── interpretability.py
+│   ├── prediction.py
+│   └── main.py
+│
+├── app.py
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-# 10. Installation
+## Application Features
 
-Clone repository:
+### Model Performance Dashboard
+
+Displays:
+
+- R² Score
+- MAE
+- RMSE
+
+### Freight Cost Prediction
+
+Users can enter:
+
+- Quantity
+- Invoice Dollar Amount
+
+and instantly receive:
+
+- Predicted Freight Cost
+
+### Business Insights
+
+Provides:
+
+- Cost forecasting support
+- Procurement planning assistance
+- Freight optimization guidance
+
+---
+
+## Installation
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/bitwise-arnesh/InvoiceLens.git
 ```
 
-Move into project:
+Navigate to project directory:
 
 ```bash
 cd InvoiceLens
@@ -404,7 +324,17 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Run application:
+---
+
+## Running the Training Pipeline
+
+```bash
+python src/main.py
+```
+
+---
+
+## Running the Web Application
 
 ```bash
 streamlit run app.py
@@ -412,50 +342,55 @@ streamlit run app.py
 
 ---
 
-# 11. Live Demo
-
-### Streamlit Application
+## Live Application
 
 https://invoicelens.streamlit.app
 
 ---
 
-# 12. Key Learning Outcomes
+## Business Impact
 
-Through this project, I gained experience in:
-
-* End-to-End Machine Learning Pipelines
-* Regression Modeling
-* Model Evaluation Techniques
-* Feature Engineering
-* SQLite Database Integration
-* Streamlit Development
-* Cloud Deployment
-* Git & GitHub Workflows
-* Production-Oriented ML Systems
+- Improved freight cost forecasting
+- Better budgeting decisions
+- Vendor freight optimization
+- Data-driven procurement planning
+- Reduced manual estimation effort
+- Faster decision-making process
 
 ---
 
-# 13. Resume Highlights
+## Key Learning Outcomes
 
-* Built an end-to-end freight cost prediction system using Machine Learning and SQLite.
-* Trained and evaluated multiple regression models including Linear Regression, Random Forest, and XGBoost.
-* Achieved **97.06% R² Score** on freight cost forecasting.
-* Developed and deployed a Streamlit application for real-time prediction.
-* Implemented the complete ML workflow from database extraction to cloud deployment.
+Through this project:
+
+- Built a complete machine learning pipeline
+- Worked with relational databases using SQLite
+- Compared multiple regression algorithms
+- Applied GridSearchCV for hyperparameter tuning
+- Used SHAP for model explainability
+- Serialized models using Joblib
+- Developed interactive applications with Streamlit
+- Deployed production-ready ML solutions to the cloud
 
 ---
 
-# 14. Author
+## Author
 
 ### Arnesh Bera
 
 Computer Science Engineering Student
 
-GitHub: https://github.com/bitwise-arnesh
+Areas of Interest:
 
-LinkedIn: https://www.linkedin.com/in/arnesh-bera
+- Machine Learning
+- Data Science
+- Artificial Intelligence
+- Generative AI
+
+GitHub:
+https://github.com/bitwise-arnesh
+
+LinkedIn:
+https://www.linkedin.com/in/arnesh-bera
 
 ---
-
-⭐ If you found this project useful, consider starring the repository.
