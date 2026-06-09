@@ -6,3 +6,6 @@ venv/
 *.pyc
 anaconda_projects/
 data/*.db
+models/*.pkl
+__pycache__/
+.ipynb_checkpoints/
