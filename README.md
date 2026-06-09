@@ -1,171 +1,143 @@
-# InvoiceLens
+# InvoiceLens 📦
 
 ### End-to-End Freight Cost Prediction System
 
-Predict vendor freight costs using machine learning, feature engineering, model evaluation, hyperparameter tuning, explainability techniques, and cloud deployment.
+Predict vendor freight costs using Machine Learning, Feature Engineering, Model Evaluation, Hyperparameter Tuning, Explainable AI (SHAP), and Cloud Deployment.
 
-**Live Demo:** https://invoicelens.streamlit.app
+<p align="center">
 
----
+![Python](https://img.shields.io/badge/Python-3.14-blue?style=for-the-badge&logo=python)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-orange?style=for-the-badge&logo=scikitlearn)
+![XGBoost](https://img.shields.io/badge/XGBoost-Regression-green?style=for-the-badge)
+![SQLite](https://img.shields.io/badge/SQLite-Database-blue?style=for-the-badge&logo=sqlite)
+![Streamlit](https://img.shields.io/badge/Streamlit-Deployed-red?style=for-the-badge&logo=streamlit)
+![SHAP](https://img.shields.io/badge/SHAP-Explainability-purple?style=for-the-badge)
 
-## Project Overview
-
-InvoiceLens is an end-to-end Machine Learning project designed to predict freight costs from invoice data.
-
-The project demonstrates the complete machine learning lifecycle:
-
-1. Data Extraction from SQLite Database
-2. Data Cleaning and Preprocessing
-3. Feature Engineering
-4. Model Training
-5. Model Evaluation
-6. Hyperparameter Tuning
-7. Model Explainability using SHAP
-8. Model Serialization
-9. Interactive Web Application Development
-10. Cloud Deployment
-
-The final solution enables procurement and logistics teams to estimate freight costs before invoice processing, supporting budgeting and operational decision-making.
+</p>
 
 ---
 
-## Business Problem
+## 🌐 Live Demo
 
-Freight expenses are a significant component of procurement and supply chain operations.
+**Streamlit Application**
 
-Manual estimation often leads to:
+https://invoicelens.streamlit.app
 
-- Cost forecasting inaccuracies
+---
+
+# 🚀 Project Overview
+
+InvoiceLens is a production-style Machine Learning application that predicts freight costs from invoice data.
+
+The project demonstrates the complete ML lifecycle:
+
+✅ Data Collection
+
+✅ Data Preprocessing
+
+✅ Feature Engineering
+
+✅ Model Training
+
+✅ Model Evaluation
+
+✅ Hyperparameter Tuning
+
+✅ Model Explainability
+
+✅ Model Deployment
+
+The final system enables procurement and logistics teams to estimate freight costs before invoice processing, improving planning and budgeting decisions.
+
+---
+
+# 🎯 Business Problem
+
+Freight expenses play a critical role in procurement and supply chain operations.
+
+Manual estimation often results in:
+
+- Inaccurate cost forecasting
 - Budget overruns
 - Vendor planning inefficiencies
-- Increased operational uncertainty
+- Operational uncertainty
 
-InvoiceLens addresses this problem by providing real-time freight cost predictions based on invoice characteristics.
+InvoiceLens addresses this challenge through real-time machine learning predictions.
 
 ---
 
-## Project Architecture
+# 🏗️ System Architecture
 
 ```text
 SQLite Database
-       │
-       ▼
+        │
+        ▼
 Data Preprocessing
-       │
-       ▼
+        │
+        ▼
 Feature Engineering
-       │
-       ▼
+        │
+        ▼
 Model Training
-       │
-       ▼
+        │
+        ▼
 Model Evaluation
-       │
-       ▼
-Hyperparameter Tuning
-       │
-       ▼
-SHAP Interpretability
-       │
-       ▼
-Model Serialization (.pkl)
-       │
-       ▼
-Streamlit Dashboard
-       │
-       ▼
+        │
+        ▼
+GridSearchCV Tuning
+        │
+        ▼
+SHAP Explainability
+        │
+        ▼
+Model Serialization
+        │
+        ▼
+Streamlit Application
+        │
+        ▼
 Cloud Deployment
 ```
 
 ---
 
-## Technology Stack
+# 🧠 Machine Learning Pipeline
 
-### Programming Language
+## 1️⃣ Data Collection
 
-- Python
+- SQLite Database
+- Invoice Records
+- Freight Cost Records
 
-### Data Processing
+## 2️⃣ Data Preprocessing
 
-- Pandas
-- NumPy
+- Data Cleaning
+- Missing Value Handling
+- Data Transformation
+- Feature Selection
 
-### Database
+## 3️⃣ Feature Engineering
 
-- SQLite
-
-### Machine Learning
-
-- Scikit-Learn
-- XGBoost
-
-### Model Selection & Optimization
-
-- GridSearchCV
-- Cross Validation
-
-### Model Explainability
-
-- SHAP
-
-### Visualization
-
-- Matplotlib
-- Seaborn
-
-### Model Persistence
-
-- Joblib
-
-### Web Application
-
-- Streamlit
-
-### Version Control
-
-- Git
-- GitHub
-
-### Deployment
-
-- Streamlit Community Cloud
-
----
-
-## Machine Learning Workflow
-
-### 1. Data Collection
-
-Data was retrieved from a SQLite database and loaded into Pandas DataFrames for analysis.
-
-### 2. Data Preprocessing
-
-Performed:
-
-- Missing value handling
-- Data cleaning
-- Data transformation
-- Feature selection
-
-### 3. Feature Engineering
-
-Created predictive features using invoice-related attributes including:
+Features used:
 
 - Quantity
 - Invoice Dollar Amount
 
-### 4. Model Training
+## 4️⃣ Model Training
 
-The following regression algorithms were trained and evaluated:
+Implemented and compared:
 
 - Linear Regression
 - Decision Tree Regressor
 - Random Forest Regressor
 - XGBoost Regressor
 
-### 5. Hyperparameter Tuning
+## 5️⃣ Hyperparameter Tuning
 
-GridSearchCV was applied to optimize XGBoost model performance.
+Performed using:
+
+- GridSearchCV
+- Cross Validation
 
 Best Parameters:
 
@@ -177,19 +149,19 @@ Best Parameters:
 }
 ```
 
-### 6. Model Explainability
+## 6️⃣ Explainable Machine Learning
 
-SHAP values were used to understand feature contributions and improve model interpretability.
+Implemented:
 
-### 7. Deployment
-
-The final application was deployed using Streamlit Community Cloud.
+- SHAP Values
+- Feature Importance Analysis
+- Model Interpretability
 
 ---
 
-## Model Performance
+# 📊 Model Performance
 
-### Linear Regression (Selected Model)
+## Final Selected Model → Linear Regression
 
 | Metric | Score |
 |----------|----------|
@@ -197,41 +169,29 @@ The final application was deployed using Streamlit Community Cloud.
 | MAE | 24.46 |
 | RMSE | 124.43 |
 
-### Decision Tree Regressor
+---
 
-| Metric | Score |
-|----------|----------|
-| R² Score | 96.30% |
-| MAE | 38.12 |
-| RMSE | 138.25 |
+## Model Comparison
 
-### Random Forest Regressor
-
-| Metric | Score |
-|----------|----------|
-| R² Score | 96.70% |
-| MAE | 30.27 |
-| RMSE | 130.63 |
-
-### XGBoost Regressor
-
-| Metric | Score |
-|----------|----------|
-| R² Score | 95.40% |
-| MAE | 26.96 |
-| RMSE | 154.20 |
+| Model | MAE | RMSE | R² Score |
+|---------|---------|---------|---------|
+| Linear Regression | 24.46 | 124.43 | 97.00% |
+| Decision Tree | 38.12 | 138.25 | 96.30% |
+| Random Forest | 30.27 | 130.63 | 96.70% |
+| XGBoost | 26.96 | 154.20 | 95.40% |
 
 ---
 
-## Why Linear Regression Was Selected
+# 🏆 Why Linear Regression Was Selected
 
-Although multiple models were evaluated, Linear Regression achieved:
+Linear Regression achieved:
 
 - Highest R² Score
 - Lowest MAE
 - Lowest RMSE
+- Best Overall Generalization
 
-Final Performance:
+Final Metrics:
 
 ```text
 R² Score : 97.00%
@@ -239,11 +199,66 @@ MAE      : 24.46
 RMSE     : 124.43
 ```
 
-Therefore, Linear Regression was chosen as the production model for deployment.
+Therefore it was chosen as the production model deployed in the Streamlit application.
 
 ---
 
-## Project Structure
+# ⚙️ Technology Stack
+
+| Category | Technologies |
+|-----------|-------------|
+| Language | Python |
+| Database | SQLite |
+| Data Processing | Pandas, NumPy |
+| Machine Learning | Scikit-Learn |
+| Gradient Boosting | XGBoost |
+| Hyperparameter Tuning | GridSearchCV |
+| Explainability | SHAP |
+| Visualization | Matplotlib, Seaborn |
+| Model Serialization | Joblib |
+| Web Application | Streamlit |
+| Version Control | Git, GitHub |
+| Deployment | Streamlit Community Cloud |
+
+---
+
+# ✨ Application Features
+
+### 📈 Model Performance Dashboard
+
+Displays:
+
+- R² Score
+- MAE
+- RMSE
+
+### 🚚 Freight Cost Prediction
+
+User Inputs:
+
+- Quantity
+- Invoice Dollar Amount
+
+Output:
+
+- Predicted Freight Cost
+
+### 📊 Business Insights
+
+- Cost Forecasting
+- Budget Planning
+- Freight Optimization
+- Procurement Analytics
+
+### ☁️ Cloud Deployment
+
+- Hosted on Streamlit Cloud
+- Publicly Accessible
+- Real-Time Predictions
+
+---
+
+# 📂 Project Structure
 
 ```text
 InvoiceLens/
@@ -273,46 +288,15 @@ InvoiceLens/
 
 ---
 
-## Application Features
+# 🖥️ Installation
 
-### Model Performance Dashboard
-
-Displays:
-
-- R² Score
-- MAE
-- RMSE
-
-### Freight Cost Prediction
-
-Users can enter:
-
-- Quantity
-- Invoice Dollar Amount
-
-and instantly receive:
-
-- Predicted Freight Cost
-
-### Business Insights
-
-Provides:
-
-- Cost forecasting support
-- Procurement planning assistance
-- Freight optimization guidance
-
----
-
-## Installation
-
-Clone the repository:
+Clone repository:
 
 ```bash
 git clone https://github.com/bitwise-arnesh/InvoiceLens.git
 ```
 
-Navigate to project directory:
+Move into project:
 
 ```bash
 cd InvoiceLens
@@ -326,7 +310,7 @@ pip install -r requirements.txt
 
 ---
 
-## Running the Training Pipeline
+# ▶️ Run Training Pipeline
 
 ```bash
 python src/main.py
@@ -334,7 +318,7 @@ python src/main.py
 
 ---
 
-## Running the Web Application
+# ▶️ Launch Streamlit Application
 
 ```bash
 streamlit run app.py
@@ -342,50 +326,46 @@ streamlit run app.py
 
 ---
 
-## Live Application
+# 💼 Business Impact
 
-https://invoicelens.streamlit.app
-
----
-
-## Business Impact
-
-- Improved freight cost forecasting
-- Better budgeting decisions
-- Vendor freight optimization
-- Data-driven procurement planning
-- Reduced manual estimation effort
-- Faster decision-making process
+- Improved Freight Cost Forecasting
+- Better Budget Planning
+- Vendor Freight Optimization
+- Data-Driven Procurement Decisions
+- Reduced Manual Estimation Effort
+- Faster Operational Decision-Making
 
 ---
 
-## Key Learning Outcomes
+# 🎓 Key Learning Outcomes
 
-Through this project:
+This project demonstrates:
 
-- Built a complete machine learning pipeline
-- Worked with relational databases using SQLite
-- Compared multiple regression algorithms
-- Applied GridSearchCV for hyperparameter tuning
-- Used SHAP for model explainability
-- Serialized models using Joblib
-- Developed interactive applications with Streamlit
-- Deployed production-ready ML solutions to the cloud
+- End-to-End Machine Learning Pipeline Development
+- Database Integration with SQLite
+- Regression Model Comparison
+- Hyperparameter Optimization
+- Explainable AI using SHAP
+- Model Serialization using Joblib
+- Streamlit Dashboard Development
+- Cloud Deployment of ML Applications
 
 ---
 
-## Author
+# 👨‍💻 Author
 
-### Arnesh Bera
+## Arnesh Bera
 
 Computer Science Engineering Student
 
-Areas of Interest:
+### Areas of Interest
 
 - Machine Learning
 - Data Science
 - Artificial Intelligence
 - Generative AI
+
+### Connect With Me
 
 GitHub:
 https://github.com/bitwise-arnesh
@@ -394,3 +374,5 @@ LinkedIn:
 https://www.linkedin.com/in/arnesh-bera
 
 ---
+
+⭐ If you found this project useful, consider giving it a star.
