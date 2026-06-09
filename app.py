@@ -40,17 +40,6 @@ st.markdown("""
     color: #475569;
 }
 
-.prediction-card {
-    padding: 25px;
-    border-radius: 15px;
-    background-color: #ecfdf5;
-    border: 2px solid #10b981;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-top: 20px;
-}
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -206,14 +195,13 @@ if predict_btn:
 
     prediction = model.predict(input_df)[0]
 
-    st.markdown(
-        f"""
-        <div class="prediction-card">
-            Predicted Freight Cost<br>
-            ${prediction:.2f}
-        </div>
-        """,
-        unsafe_allow_html=True
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    st.success("Prediction Generated Successfully!")
+
+    st.metric(
+        label="Predicted Freight Cost",
+        value=f"${prediction:,.2f}"
     )
 
 # =====================================
